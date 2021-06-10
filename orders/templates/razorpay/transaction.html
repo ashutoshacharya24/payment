@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <link rel="stylesheet" href="razorpay/css/transaction.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="rzp-button1">Pay</button>
+
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="https://js.stripe.com/v2/" type="text/javascript"></script> -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+      var options = {
+        "key": "{{ key }}", // Enter the Key ID generated from the Dashboard
+        "amount": "{{ amount }}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "USD",
+        "name": "Acme Corp",
+        "description": "Test Transaction",
+        // "image": "{% static 'assets/logo.png' %}",
+        "order_id": "{{ razorpay_order_id }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "{% url 'payment_success' %}",
+        "theme": {
+            "color": "#3399cc"
+        }
+      };
+
+      var rzp1 = new Razorpay(options);
+      document.getElementById('rzp-button1').onclick = function (e) {
+          rzp1.open();
+          e.preventDefault();
+      }
+    </script>
+  </body>
+</html>

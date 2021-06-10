@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+}
+.submit-button {
+    margin-top: 10px;
+  }
+body{
+    width:430px;
+    height: 700px;
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    background: #052f50;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+}

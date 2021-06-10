@@ -3,7 +3,9 @@ import razorpay
 from django.contrib import messages
 from razorpay.errors import SignatureVerificationError
 from django.views.decorators.csrf import csrf_exempt
-client = razorpay.Client(auth=('rzp_test_uTDyXH9RZfKgds', 'XNLBYL7GUQbHSdMaI6M5070B'))
+# client = razorpay.Client(auth=('rzp_test_uTDyXH9RZfKgds', 'XNLBYL7GUQbHSdMaI6M5070B'))
+from payment.settings import RAZORPAY_KEY, RAZORPAY_SECRET
+client = razorpay.Client(auth=(RAZORPAY_KEY, RAZORPAY_SECRET))
 
 # Create your views here.
 
